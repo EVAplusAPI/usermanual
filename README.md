@@ -31,7 +31,7 @@ Response:
 ```
 {
   "name": "guest",
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJc3N1ZWRBdCI6MTU4MTU4NjMyNSwicm9sZXMiOiJBZG1pbiIsIm5hbWUiOiJndWVzdCIsInZlaGljbGVzIjoiIiwibGFuZyI6IkVOIiwiYWN0aW9ucyI6IiIsImVtYWlsIjoiZ3Vlc3RAZ21haWwuY29tIn0.EOmOanRY7Bg-hzY914yUM1rNY05ZhLAXZ06v_3rlae4"
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJc3N"
 }
 ```
 ### Logout
