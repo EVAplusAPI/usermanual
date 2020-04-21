@@ -344,6 +344,15 @@ Event Response:
 ]
 ```
 
- 
+# Tutorials
+## postman
+tbd
+## google docs
+https://github.com/EVAplusAPI/googledocs
+## R
+https://github.com/EVAplusAPI/R
+## Python
+https://github.com/EVAplusAPI/python
+
 
 
