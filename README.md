@@ -348,11 +348,11 @@ Event Response:
 ## postman
 tbd
 ## google docs
-https://github.com/EVAplusAPI/googledocs
+[google docs repository](https://github.com/EVAplusAPI/googledocs)
 ## R
-https://github.com/EVAplusAPI/R
+[R repository](https://github.com/EVAplusAPI/R)
 ## Python
-https://github.com/EVAplusAPI/python
+[Python repository](https://github.com/EVAplusAPI/python)
 
 
 
