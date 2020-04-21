@@ -217,11 +217,6 @@ Data can be pulled from EVA+ with a REST Query from:
 | signal | Optional | Signal Name of the signal to be transferred, List of the signals separated by “;” or “ALL” for all signals | If no  signal is selected all signals are selected
 | page | Optional | page number 0-n | If there is no page specified, service will return the first page. | In result there will be information how many pages are there for specific period of time and signals.	Page range is form 0 till "page_count" in result set.
 
-- if startDate is not provided, API will retrieve the latest data up to endDate considering limit.
-- if endDate is not provided, API will retrieve data from  startDate considering limit.
-- if startDate and endDate are not provided, API will retrieve latest data considering limit.
-- if signals is not provided, API will provide all signals considering limit and time range.
-
 
 ### Signal POST Method
 Request Method: POST (all options)
@@ -287,11 +282,6 @@ EVA+ does not store information regarding the state of transfer. Therefore, EVA+
 |  event | optional | Event Type to be transferred, List of the events separated by “;” or “ALL” for all events.	If no event is selected all events are selected
 | page | optional | page >= 0 | If there is no page specify, service will give back first page. In result there will be information how many pages are there for specific period of time and events.	Page range is form 0 till "page_count" in result set.
 
-TBD:
-- if startDate is not provided, API will retrieve the latest data up to endDate considering limit.
-- if endDate is not provided, API will retrieve data from  startDate considering limit.
-- if startDate and endDate are not provided, API will retrieve latest data considering limit.
-- if signals is not provided, API will provide all signals considering limit and time range.
 
 ### Events POST Method
 Request Method: **POST** (all options)
