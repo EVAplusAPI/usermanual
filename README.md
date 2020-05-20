@@ -15,8 +15,15 @@ Based on the available modules, the operator can define datasets which are acces
  In the following examples `_EVA+ URL_` has to be replaced with the customer specific URL e.g.: railwaycompany.evaplus.com 
 ##	Security
 ###	User and Roles
-In the “user settings” a role with the name “API” has to be created.
-Every users credential with this role can then be used for the process below.
+In “user settings” of the EVA+ webinterface, the permission to access the API of a specific module can be assigned to a role.
+
+- EVA+ API
+- EVA+ Fleet API
+- EVA+ Fleet Location API
+- EVA+ Teloc Manager API
+
+The API permission has to be set explicitly. It is not automatically given if the permission "ALL Modules All Actions" is set.
+
 A user can only perform one request at the time.
 ### Login
 
@@ -31,12 +38,23 @@ Response:
 ```
 {
   "name": "guest",
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJc3N"
+  "email": "guest@haslerrail.com",
+  "roles": "andAPI",
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJc3N",
+  "lang": "EN",
+  "roleActions": "API;API_FLEET;API_FLEET_LOCATIONS;API_TELOC_MANAGER;",
+  "roleVehicles": "ALL;"
 }
 ```
+
+All API calls from now on will use this string token as Header Value for auhtorization.
+
 ### Logout
 Request Method: POST
 https://` _EVA+ URL_` /EvaCloudAPI/logout
+- Header key: Authorization
+- Header Value: Token
+
 
 Response:
 ```
@@ -221,11 +239,11 @@ Data can be pulled from EVA+ with a REST Query from:
 ### Signal POST Method
 Request Method: POST (all options)
 https://`_EVA+ URL_`/EvaCloudAPI/getSignals
-
+- Header key: Authorization
+- Header Value: Token
 Request Header Data
 ```
 {
-	"Authorization": token,
 	"vehicleId": "3002",
 	"recorderId": "5004354",
 	"startTime": "201912301234",
@@ -286,7 +304,8 @@ EVA+ does not store information regarding the state of transfer. Therefore, EVA+
 ### Events POST Method
 Request Method: **POST** (all options)
 https://`_EVA+ URL_`/EvaCloudAPI/getEvents
-
+- Header key: Authorization
+- Header Value: Token
 Request Header Data
 ```
 {
@@ -333,6 +352,214 @@ Event Response:
   }
 ]
 ```
+#	Fleet Management | coming soon
+
+## Fleet management overview | coming soon
+
+To be able to access this api user's role must have "EVA+ Fleet API" action selected.
+
+Request Method: **GET**
+https://`_EVA+ URL_`/EvaCloudAPI/fleet/overview
+- Header key: Authorization
+- Header Value: Token
+
+Response:
+```
+[
+    {
+        "GPS_SPEED": "0.5659999999999999",
+        "LAT": "-34.9210692670",
+        "LON": "138.5931572830",
+        "DISTANCE": 161429.82987,
+        "System_Speed": "0",
+        "GPS_DIR": "110.70",
+        "vehicle_id": "3020",
+        "timestamp": 1589963845164,
+        "POI": "Temp001"
+    },
+    {
+        "LAT": "-34.92095110",
+        "LON": "138.59273940",
+        "DISTANCE": 192724.9451,
+        "GPS_SPEED": "0.4630",
+        "GPS_DIR": "93.0",
+        "System_Speed": "0",
+        "vehicle_id": "3021",
+        "timestamp": 1589963837660,
+        "POI": "Temp001"
+    }
+]
+```
+
+ 
+##	Fleet mileage prediction | coming soon
+
+To be able to access this, api user's role must have "EVA+ Fleet API" action selected.
+
+| Parameter	| Optional	| Argument	| Comment
+| --- | --- | --- | --- |
+| vehicleId | optional | Vehicle ID as stored in the TELOC.	
+| from | mandatory | long | Data from this timestamp will be retrieved, including this timestamp.  	If no date is specified only limit is taken into consideration.
+| to | mandatory | long | Data up to this timestamp will be retrieved, including this timestamp. 	If no date is specified new data is selected
+| pdays | optional | long | days to predict
+
+Request Method: **GET**
+https://`_EVA+ URL_`/EvaCloudAPI/fleet/getPredictions
+- Header key: Authorization
+- Header Value: Token
+
+Response:
+```
+{
+  "ds": ["2020-05-12", "2020-05-13", "2020-05-14", "2020-05-15", "2020-05-16", "2020-05-17", "2020-05-18", "2020-05-19", "2020-05-20", "2020-05-21", "2020-05-22", "2020-05-23"],
+
+  "yhat_lower": [206811.75257, 206843.34542, 206843.34542, 206906.52590606682, 206938.1144763812, 206969.70134999036, 207001.28840152448, 207032.8743618402, 207064.45802020634, 207096.0426951642, 207127.62444321546, 207159.20630498516], 
+  
+  "yhat_upper": [206811.75257, 206843.34542, 206843.34542, 206906.53563379718, 206938.13333319896, 206969.732651859, 207001.3327320565, 207032.93413123023, 207064.535836731, 207096.1368928556, 207127.73811006278, 207159.34064282666],
+
+  "yhat": [206811.75257, 206843.34542, 206843.34542, 206906.53111999994, 206938.12396999993, 206969.7168199999, 207001.3096699999, 207032.90251999986, 207064.49536999984, 207096.08821999983, 207127.68106999982, 207159.27391999974]
+}
+```
+
+
+## Fleet location | coming soon
+
+To be able to access this, api user's role must have "EVA+ Fleet Location API" action selected.
+
+Request Method: **GET**
+https://`_EVA+ URL_`/EvaCloudAPI/modules/getFleetLocations
+- Header key: Authorization
+- Header Value: Token
+
+Response:
+```
+[{
+	"vehicle_id": "07",
+	"latitude": 53.377501333,
+	"longitude": -2.741854333,
+	"speed": 21.391,
+	"location_time": 1586340743534,
+	"delay": 3015755,
+	"rotation": 0.0,
+	"serial_number": "18090038",
+	"vehicle_state": "ok",
+	"event_timestamp": -1
+}, {
+	"vehicle_id": "1",
+	"latitude": 53.755609333,
+	"longitude": -2.707278167,
+	"speed": 1.788,
+	"location_time": 1586340741680,
+	"delay": 3015757,
+	"rotation": 0.0,
+	"serial_number": "17023570",
+	"vehicle_state": "ok",
+	"event_timestamp": -1
+}, {
+	"vehicle_id": "13",
+	"latitude": 53.4019345,
+	"longitude": -2.929962833,
+	"speed": 2.844,
+	"location_time": 1582102721330,
+	"delay": 7253778,
+	"rotation": 0.0,
+	"serial_number": "19020552",
+	"vehicle_state": "ok",
+	"event_timestamp": -1
+}]
+```
+
+
+
+#	Teloc Manager | coming soon
+ 
+## Teloc Manager Overview | coming soon
+
+To be able to access this api user's role must have "EVA+ Teloc Manager API" action selected.
+
+Request Method: **GET**
+https://`_EVA+ URL_`/EvaCloudAPI/modules/getRecorderList
+- Header key: Authorization
+- Header Value: Token
+
+Response:
+```
+[{
+	"vehicle_type": "NORTHERN_DMU",
+	"serial_number": "18090038",
+	"vehicle_id": "07",
+	"configuration_name": "CAF-UK Northern DMU - C.I9",
+	"issue_number": "12",
+	"article_number": "5_2423_021_07",
+	"application": "2402.05.26.09",
+	"last_time_seen": "2020-04-08",
+	"status": "OK",
+	"error_code": ""
+}, {
+	"vehicle_type": "NORTHERN_DMU",
+	"serial_number": "17023570",
+	"vehicle_id": "1",
+	"configuration_name": "CAF-UK Northern DMU - C.I9",
+	"issue_number": "12",
+	"article_number": "5_2423_021_07",
+	"application": "2402.05.26.09",
+	"last_time_seen": "2020-04-08",
+	"status": "Warning",
+	"error_code": "6"
+}, {
+	"vehicle_type": "NORTHERN_EMU",
+	"serial_number": "19020552",
+	"vehicle_id": "13",
+	"configuration_name": "CAF-UK Northern EMU - C.I8",
+	"issue_number": "13",
+	"article_number": "5_2423_021_04",
+	"application": "2402.05.26.09",
+	"last_time_seen": "2020-02-19",
+	"status": "Error",
+	"error_code": "LTS"
+}]
+```
+
+## Teloc Recording Counts | coming soon
+
+To be able to access this api user's role must have "EVA+ Teloc Manager API" action selected.
+
+
+| Parameter	| Optional	| Argument	| Comment
+| --- | --- | --- | --- |
+| vehicleId | optional | Vehicle ID as stored in the TELOC.	
+| startTime | mandatory | Data from this timestamp will be retrieved, including this timestamp (yyyyMMddHHmm) | If no date is specified only limit is taken into consideration.
+| endTime | mandatory | Data up to this timestamp will be retrieved, including this timestamp (yyyyMMddHHmm) | If no date is specified new data is selected
+| page | optional | If there is no page specify, service will give back first page. In result there will be information how many pages are there for specific period of time and events | Page range is form 0 till "page_count" in result set
+
+Request Method: **GET**
+https://`_EVA+ URL_`/EvaCloudAPI/modules/getRecordingCounts
+- Header key: Authorization
+- Header Value: Token
+
+Response:
+```
+[{
+	"signal": "Unit_Position_Latitude_deg",
+	"date": "2020-02-19",
+	"recording_count": 14206
+}, {
+	"signal": "Traction_Safe_Relay_2",
+	"date": "2020-02-19",
+	"recording_count": 45
+}, {
+	"signal": "Unit_Speed_of_TCMS_kmh",
+	"date": "2020-02-19",
+	"recording_count": 20255
+}, {
+	"signal": "Speed_1_SABO2",
+	"date": "2020-02-19",
+	"recording_count": 10103
+}, {
+	"page_count": 0
+}]
+```
+
 
 # Tutorials
 ## postman
