@@ -352,9 +352,9 @@ Event Response:
   }
 ]
 ```
-#	Fleet Management | coming soon
+#	Fleet Management
 
-## Fleet management overview | coming soon
+## Fleet management overview
 
 To be able to access this api user's role must have "EVA+ Fleet API" action selected.
 
@@ -392,16 +392,15 @@ Response:
 ```
 
  
-##	Fleet mileage prediction | coming soon
+##	Fleet mileage prediction 
 
 To be able to access this, api user's role must have "EVA+ Fleet API" action selected.
 
 | Parameter	| Optional	| Argument	| Comment
 | --- | --- | --- | --- |
-| vehicleId | optional | Vehicle ID as stored in the TELOC.	
-| from | mandatory | long | Data from this timestamp will be retrieved, including this timestamp.  	If no date is specified only limit is taken into consideration.
-| to | mandatory | long | Data up to this timestamp will be retrieved, including this timestamp. 	If no date is specified new data is selected
-| pdays | optional | long | days to predict
+| vehicleId | mandatory | Vehicle ID as stored in the TELOC.	
+| daysInPast | optional | int | How many data will be taken in calculation for prediction. Longer period gives better predition. This is number of days in past will be taken in calculation (default value is 100)
+| daysInFuture | optional | int | days to predict (default value is 10)
 
 Request Method: **GET**
 https://`_EVA+ URL_`/EvaCloudAPI/fleet/getPredictions
@@ -422,12 +421,12 @@ Response:
 ```
 
 
-## Fleet location | coming soon
+## Fleet location 
 
 To be able to access this, api user's role must have "EVA+ Fleet Location API" action selected.
 
 Request Method: **GET**
-https://`_EVA+ URL_`/EvaCloudAPI/modules/getFleetLocations
+https://`_EVA+ URL_`/EvaCloudAPI/fleet/getLocations
 - Header key: Authorization
 - Header Value: Token
 
@@ -471,14 +470,14 @@ Response:
 
 
 
-#	Teloc Manager | coming soon
+#	Teloc Manager 
  
-## Teloc Manager Overview | coming soon
+## Teloc Manager Overview 
 
 To be able to access this api user's role must have "EVA+ Teloc Manager API" action selected.
 
 Request Method: **GET**
-https://`_EVA+ URL_`/EvaCloudAPI/modules/getRecorderList
+https://`_EVA+ URL_`/EvaCloudAPI/teloc/getRecorderList
 - Header key: Authorization
 - Header Value: Token
 
@@ -520,7 +519,7 @@ Response:
 }]
 ```
 
-## Teloc Recording Counts | coming soon
+## Teloc Recording Counts 
 
 To be able to access this api user's role must have "EVA+ Teloc Manager API" action selected.
 
@@ -533,7 +532,7 @@ To be able to access this api user's role must have "EVA+ Teloc Manager API" act
 | page | optional | If there is no page specify, service will give back first page. In result there will be information how many pages are there for specific period of time and events | Page range is form 0 till "page_count" in result set
 
 Request Method: **GET**
-https://`_EVA+ URL_`/EvaCloudAPI/modules/getRecordingCounts
+https://`_EVA+ URL_`/EvaCloudAPI/teloc/getRecordingCounts
 - Header key: Authorization
 - Header Value: Token
 
@@ -570,6 +569,3 @@ tbd
 [R repository](https://github.com/EVAplusAPI/R)
 ## Python
 [Python repository](https://github.com/EVAplusAPI/python)
-
-
-
