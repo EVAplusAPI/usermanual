@@ -546,7 +546,9 @@ To be able to access this api user's role must have "EVA+ Teloc Manager API" act
 
 Request Method: **GET**
 
-https://`_EVA+ URL_`/EvaCloudAPI/teloc/getRecordingCounts?vehicleId=357001_B&startTime=202110010000&endTime=202110100300&signal=System_SPEED
+https://`_EVA+ URL_`/EvaCloudAPI/teloc/getRecordingCounts?vehicleId=357001_A
+
+https://`_EVA+ URL_`/EvaCloudAPI/teloc/getRecordingCounts?vehicleId=357001_A&startTime=20211113&endTime=20211114&signal=System_SPEED
 - Header key: Authorization
 - Header Value: Token
 
