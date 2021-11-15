@@ -578,7 +578,7 @@ Response:
 
 # Tutorials
 ## postman
-tbd
+[postman example](https://github.com/EVAplusAPI/postman)
 ## google docs
 [google docs repository](https://github.com/EVAplusAPI/googledocs)
 ## R
