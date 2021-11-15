@@ -27,7 +27,8 @@ The API permission has to be set explicitly. It is not automatically given if th
 A user can only perform one request at the time.
 ### Login
 
-Request Method: POST
+Request Method: **POST**
+
 https://`_EVA+ URL_`/EvaCloudAPI/login
 
 Body (Content-Type = application/json )
@@ -50,7 +51,8 @@ Response:
 All API calls from now on will use this string token as Header Value for auhtorization.
 
 ### Logout
-Request Method: POST
+Request Method: **POST**
+
 https://` _EVA+ URL_` /EvaCloudAPI/logout
 - Header key: Authorization
 - Header Value: Token
@@ -67,7 +69,8 @@ Response:
 https is used for the rest call. 
 ##	General Data
 ###	Vehicle List
-Request Method: GET
+Request Method: **GET**
+
 https://`_EVA+ URL_` /EvaCloudAPI/getVehicleFleet
 - Header key: Authorization
 - Header Value: Token
@@ -116,7 +119,8 @@ Response:
 ```
  
 ### Recorder List
-Request Method: GET
+Request Method: **GET**
+
 https://`_EVA+ URL_`/EvaCloudAPI/getRecorderVehicle
 - Header key: Authorization
 - Header Value: Token
@@ -147,8 +151,9 @@ Response:
  
 ### Signal Name List
 
-Request Method: GET
-https://`_EVA+ URL_`/EvaCloudAPI/getSignalNameList
+Request Method: **GET**
+
+https://`_EVA+ URL_`/EvaCloudAPI/getSignalNameList?vehicleId=358949_A
 - Header key: Authorization
 - Header Value: Token
 
@@ -180,6 +185,7 @@ Response:
 ### Event Name List
 
 Request Method: **GET**
+
 https://`_EVA+ URL_`/EvaCloudAPI/getEventNameList
 - Header key: Authorization
 - Header Value: Token
@@ -237,10 +243,12 @@ Data can be pulled from EVA+ with a REST Query from:
 
 
 ### Signal POST Method
-Request Method: POST (all options)
+Request Method: **POST**
+
 https://`_EVA+ URL_`/EvaCloudAPI/getSignals
 - Header key: Authorization
 - Header Value: Token
+
 Request Header Data
 ```
 {
@@ -302,7 +310,8 @@ EVA+ does not store information regarding the state of transfer. Therefore, EVA+
 
 
 ### Events POST Method
-Request Method: **POST** (all options)
+Request Method: **POST** 
+
 https://`_EVA+ URL_`/EvaCloudAPI/getEvents
 - Header key: Authorization
 - Header Value: Token
@@ -359,6 +368,7 @@ Event Response:
 To be able to access this api user's role must have "EVA+ Fleet API" action selected.
 
 Request Method: **GET**
+
 https://`_EVA+ URL_`/EvaCloudAPI/fleet/overview
 - Header key: Authorization
 - Header Value: Token
@@ -426,6 +436,7 @@ Response:
 To be able to access this, api user's role must have "EVA+ Fleet Location API" action selected.
 
 Request Method: **GET**
+
 https://`_EVA+ URL_`/EvaCloudAPI/fleet/getLocations
 - Header key: Authorization
 - Header Value: Token
@@ -477,6 +488,7 @@ Response:
 To be able to access this api user's role must have "EVA+ Teloc Manager API" action selected.
 
 Request Method: **GET**
+
 https://`_EVA+ URL_`/EvaCloudAPI/teloc/getRecorderList
 - Header key: Authorization
 - Header Value: Token
@@ -530,9 +542,11 @@ To be able to access this api user's role must have "EVA+ Teloc Manager API" act
 | startTime | mandatory | Data from this timestamp will be retrieved, including this timestamp (yyyyMMddHHmm) | If no date is specified only limit is taken into consideration.
 | endTime | mandatory | Data up to this timestamp will be retrieved, including this timestamp (yyyyMMddHHmm) | If no date is specified new data is selected
 | page | optional | If there is no page specify, service will give back first page. In result there will be information how many pages are there for specific period of time and events | Page range is form 0 till "page_count" in result set
+| signal | optional | Signal to be counted | If no signal is specified the count is returned for all signals.
 
 Request Method: **GET**
-https://`_EVA+ URL_`/EvaCloudAPI/teloc/getRecordingCounts
+
+https://`_EVA+ URL_`/EvaCloudAPI/teloc/getRecordingCounts?vehicleId=357001_B&startTime=202110010000&endTime=202110100300&signal=System_SPEED
 - Header key: Authorization
 - Header Value: Token
 
