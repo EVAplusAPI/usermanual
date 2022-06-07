@@ -308,7 +308,7 @@ EVA+ does not store information regarding the state of transfer. Therefore, EVA+
 |  event | optional | Event Type to be transferred, List of the events separated by “;” or “ALL” for all events.	If no event is selected all events are selected
 | page | optional | page >= 0 | If there is no page specify, service will give back first page. In result there will be information how many pages are there for specific period of time and events.	Page range is form 0 till "page_count" in result set.
 
-### Signal POST Method
+### ETCS Signal POST Method
 Request Method: **POST**
 
 https://`_EVA+ URL_`/EvaCloudAPI/getSignalsEtcs
@@ -341,7 +341,7 @@ Second example of header data has **"isRaw" : "false"**, in this case response w
 ```
 
  
-### Signal Response
+### ETCS Signal Response
 
 Last element in array of result set is "page_count" that give information how many page are there for specific date time range and signal.
 
