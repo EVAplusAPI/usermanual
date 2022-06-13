@@ -308,6 +308,326 @@ EVA+ does not store information regarding the state of transfer. Therefore, EVA+
 |  event | optional | Event Type to be transferred, List of the events separated by “;” or “ALL” for all events.	If no event is selected all events are selected
 | page | optional | page >= 0 | If there is no page specify, service will give back first page. In result there will be information how many pages are there for specific period of time and events.	Page range is form 0 till "page_count" in result set.
 
+### ETCS Signal POST Method
+Request Method: **POST**
+
+https://`_EVA+ URL_`/EvaCloudAPI/getSignalsEtcs
+- Header key: Authorization
+- Header Value: Token
+
+Request Header Data - There are two posibilites for sending request header data, depending on the value of **isRaw** parameter.
+First example of header data has **"isRaw" : "true"**, which means that returned data from collection will have data frame in format of byte array.
+Second example of header data has **"isRaw" : "false"**, in this case response will have data with decoded value of data frame.
+```
+{
+    "vehicleId":"93 85 1 501 018-0",
+    "recorderId":"19090371",
+    "startTime":"202110130900",
+    "endTime":"202110131000",
+    "page":"0",
+    "signals":["TELEGRAM FROM BALISE [6]"],
+    "isRaw":"true"
+}
+
+{
+    "vehicleId":"93 85 1 501 018-0",
+    "recorderId":"19090371",
+    "startTime":"202110130900",
+    "endTime":"202110131000",
+    "page":"0",
+    "signals":["TELEGRAM FROM BALISE [6]"],
+    "isRaw":"false"
+}
+```
+
+ 
+### ETCS Signal Response
+
+Last element in array of result set is "page_count" that give information how many page are there for specific date time range and signal.
+
+First example of response is case scenario where we have **"isRaw" : "false"** in header data. 
+```
+[
+	{
+		"conf_issue": "SBB_EC250:12",
+		"teloc_file": "/mnt/igfs/adl/20211103/b10ac8f5-e7f6-4859-a461-c40b45252e1e_Stadler_RABe_501_93_85_1_501_018-0_20211013-093546-00605.tel",
+		"teloc_memory": "T_3000_ETCS_INT_ETCS",
+		"time": "2021-10-13 09:32:36:400",
+		"distance": "3455.7222222222217",
+		"identifier": "EM_6",
+		"value": {
+			"signals": [
+				{
+					"value": {
+						"value": 6
+					},
+					"signals": [
+						{
+							"signals": [
+								{
+									"value": {
+										"value": 6
+									},
+									"identifier": "NID_MESSAGE",
+									"flagVoid": false,
+									"flagRecInternal": false,
+									"strValue": "TELGRAM FROM BALISE [6]"
+								},
+								{
+									"value": {
+										"value": 143
+									},
+									"identifier": "L_MESSAGE",
+									"flagVoid": false,
+									"flagRecInternal": false
+								}
+							],
+							"identifier": "HEADER",
+							"flagVoid": false,
+							"flagRecInternal": false,
+							"strValue": "11 fields"
+						}
+					],
+					"identifier": "EM_6",
+					"flagVoid": false,
+					"flagRecInternal": false,
+					"strValue": "TELEGRAM FROM BALISE [6]"
+				}
+			],
+			"record": {
+				"recId": 61,
+				"msgId": 6,
+				"time": 1634117556400,
+				"speed": 39,
+				"distance": 3455.7222222222219,
+				"odometry": false,
+				"rawData": [
+					6,
+					17,
+					-27,
+					105,
+					-87,
+					-126,
+					68,
+					8,
+					55,
+					-119,
+					75,
+					-88,
+					16,
+					12,
+					120,
+					21,
+					-112,
+					-100,
+					-4,
+					-4,
+					-4,
+					-4,
+					-4,
+					-4,
+					-4,
+					-4,
+					-4,
+					-4,
+					-4,
+					-4,
+					-4,
+					-4,
+					-4,
+					-4,
+					0,
+					113,
+					-47,
+					9,
+					90,
+					16,
+					47,
+					-6,
+					13,
+					-30,
+					116,
+					-87,
+					3,
+					-115,
+					6,
+					0,
+					4,
+					0,
+					-28,
+					-60,
+					-28,
+					32,
+					-128,
+					-1,
+					-4,
+					84,
+					1,
+					-60,
+					-125,
+					0,
+					2,
+					0,
+					114,
+					98,
+					114,
+					16,
+					64,
+					127,
+					-2,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1,
+					-1
+				],
+				"parsedTime": 0,
+				"referenceBlock": false,
+				"version": 33
+			},
+			"time": "Oct 13, 2021, 11:32:36 AM",
+			"distance": 3455.7222222222219,
+			"timeChangedInSignals": "NONE"
+		},
+		"vehicle_id": "93 85 1 501 018-0",
+		"serial_number": "19090371",
+		"strvalue": "TELEGRAM FROM BALISE [6]"
+	},
+	{
+		"page_count": 0
+	}
+]
+```
+
+Second example of response is case scenario where we have **"isRaw" : "true"** in header data. 
+```
+[
+  {
+    "conf_issue": "SBB_EC250:12",
+    "teloc_file": "/mnt/igfs/adl/20211103/b10ac8f5-e7f6-4859-a461-c40b45252e1e_Stadler_RABe_501_93_85_1_501_018-0_20211013-093546-00605.tel",
+    "teloc_memory": "T_3000_ETCS_INT_ETCS",
+    "time": "2021-10-13 09:32:36:400",
+    "distance": "3455.7222222222217",
+    "identifier": "EM_6",
+    "value": "6",
+    "vehicle_id": "93 85 1 501 018-0",
+    "serial_number": "19090371",
+    "strvalue": "TELEGRAM FROM BALISE [6]",
+    "data_frame": {
+      "type": 0,
+      "data": [
+        0,
+        1,
+        46,
+        99,
+        111,
+        109,
+        46,
+        104,
+        97,
+        115,
+        108,
+        101,
+        114,
+        114,
+        97,
+        105,
+        108,
+        46,
+        112,
+        97,
+        114,
+        115,
+        "2000+ fields more"
+      ]
+    }
+  },
+  {
+    "page_count": 0
+  }
+]
+```
+
+EVA+ does not store information regarding the state of transfer. Therefore, EVA+ cannot be queried for the newest data which was not previously transferred.
+
+
+ 
+##	Event Querying
+
+| Parameter	| Optional	| Argument	| Comment
+| --- | --- | --- | --- |
+| vehicleId | optional | Vehicle ID as stored in the TELOC.	
+| startTime | mandatory | (yyyyMMddHHmm) | Data from this timestamp will be retrieved, including this timestamp.  	If no date is specified only limit is taken into consideration.
+| endTime | mandatory | (yyyyMMddHHmm) | Data up to this timestamp will be retrieved, including this timestamp. 	If no date is specified new data is selected
+| isRaw | mandatory | true <-> false | Value **true** means that returned data from collection will have data frame in format of byte array.    Value **false**  means that response will have data with decoded value of data frame
+|  event | optional | Event Type to be transferred, List of the events separated by “;” or “ALL” for all events.	If no event is selected all events are selected
+| page | optional | page >= 0 | If there is no page specify, service will give back first page. In result there will be information how many pages are there for specific period of time and events.	Page range is form 0 till "page_count" in result set.
+
 
 ### Events POST Method
 Request Method: **POST** 
