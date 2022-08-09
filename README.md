@@ -9,6 +9,9 @@ The REST based data API allows to make data available for humans and 3rd  party 
 
 Based on the available modules, the operator can define datasets which are accessible from outside the application. 
 
+Limitation:
+The API calls are queued, so that only one call is executed at the time. The next call is processed once the previous response has been sent.
+The default limit of records to be retrieved is 10000 records.
 
 
 #	REST API 
