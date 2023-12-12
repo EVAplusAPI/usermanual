@@ -15,7 +15,7 @@ The default limit of records to be retrieved is 10000 records.
 
 
 #	REST API 
- In the following examples `_EVA+ URL_` has to be replaced with the customer specific URL e.g.: railwaycompany.evaplus.com 
+ In the following examples EVA+URL  has to be replaced with the customer specific URL e.g.: railwaycompany.evaplus.com 
 ##	Security
 ###	User and Roles
 In “user settings” of the EVA+ webinterface, the permission to access the API of a specific module can be assigned to a role.
@@ -32,7 +32,7 @@ A user can only perform one request at the time.
 
 Request Method: **POST**
 
-https://`_EVA+ URL_`/EvaCloudAPI/login
+https:// EVA+URL /EvaPlusRest/auth/login
 
 Body (Content-Type = application/json )
 ```
@@ -53,20 +53,7 @@ Response:
 
 All API calls from now on will use this string token as Header Value for auhtorization.
 
-### Logout
-Request Method: **POST**
 
-https://` _EVA+ URL_` /EvaCloudAPI/logout
-- Header key: Authorization
-- Header Value: Token
-
-
-Response:
-```
-{
-  "message": "User successfully logout."
-}
-```
 ###	HTTPS
 
 https is used for the rest call. 
@@ -74,7 +61,7 @@ https is used for the rest call. 
 ###	Vehicle List
 Request Method: **GET**
 
-https://`_EVA+ URL_` /EvaCloudAPI/getVehicleFleet
+https://EVA+URL/EvaPlusRest/getVehicleFleet
 - Header key: Authorization
 - Header Value: Token
 
@@ -124,7 +111,7 @@ Response:
 ### Recorder List
 Request Method: **GET**
 
-https://`_EVA+ URL_`/EvaCloudAPI/getRecorderVehicle
+https:// EVA+URL /EvaPlusRest/getRecorderVehicle
 - Header key: Authorization
 - Header Value: Token
 
@@ -156,7 +143,7 @@ Response:
 
 Request Method: **GET**
 
-https://`_EVA+ URL_`/EvaCloudAPI/getSignalNameList?vehicleId=358949_A
+https:// EVA+URL /EvaPlusRest/getSignalNameList?vehicleId=358949_A
 - Header key: Authorization
 - Header Value: Token
 
@@ -189,7 +176,7 @@ Response:
 
 Request Method: **GET**
 
-https://`_EVA+ URL_`/EvaCloudAPI/getEventNameList
+https:// EVA+URL /EvaPlusRest/getEventNameList
 - Header key: Authorization
 - Header Value: Token
 
@@ -248,7 +235,7 @@ Data can be pulled from EVA+ with a REST Query from:
 ### Signal POST Method
 Request Method: **POST**
 
-https://`_EVA+ URL_`/EvaCloudAPI/getSignals
+https:// EVA+URL /EvaPlusRest/getSignals
 - Header key: Authorization
 - Header Value: Token
 
@@ -314,7 +301,7 @@ EVA+ does not store information regarding the state of transfer. Therefore, EVA+
 ### ETCS Signal POST Method
 Request Method: **POST**
 
-https://`_EVA+ URL_`/EvaCloudAPI/getSignalsEtcs
+https:// EVA+URL /EvaPlusRest/getSignalsEtcs
 - Header key: Authorization
 - Header Value: Token
 
@@ -635,7 +622,7 @@ EVA+ does not store information regarding the state of transfer. Therefore, EVA+
 ### Events POST Method
 Request Method: **POST** 
 
-https://`_EVA+ URL_`/EvaCloudAPI/getEvents
+https:// EVA+URL /EvaPlusRest/getEvents
 - Header key: Authorization
 - Header Value: Token
 Request Header Data
@@ -692,7 +679,7 @@ To be able to access this api user's role must have "EVA+ Fleet API" action sele
 
 Request Method: **GET**
 
-https://`_EVA+ URL_`/EvaCloudAPI/fleet/overview
+https:// EVA+URL /EvaPlusRest/fleet/overview
 - Header key: Authorization
 - Header Value: Token
 
@@ -725,33 +712,6 @@ Response:
 ```
 
  
-##	Fleet mileage prediction 
-
-To be able to access this, api user's role must have "EVA+ Fleet API" action selected.
-
-| Parameter	| Optional	| Argument	| Comment
-| --- | --- | --- | --- |
-| vehicleId | mandatory | Vehicle ID as stored in the TELOC.	
-| daysInPast | optional | int | How many data will be taken in calculation for prediction. Longer period gives better predition. This is number of days in past will be taken in calculation (default value is 100)
-| daysInFuture | optional | int | days to predict (default value is 10)
-
-Request Method: **GET**
-https://`_EVA+ URL_`/EvaCloudAPI/fleet/getPredictions
-- Header key: Authorization
-- Header Value: Token
-
-Response:
-```
-{
-  "ds": ["2020-05-12", "2020-05-13", "2020-05-14", "2020-05-15", "2020-05-16", "2020-05-17", "2020-05-18", "2020-05-19", "2020-05-20", "2020-05-21", "2020-05-22", "2020-05-23"],
-
-  "yhat_lower": [206811.75257, 206843.34542, 206843.34542, 206906.52590606682, 206938.1144763812, 206969.70134999036, 207001.28840152448, 207032.8743618402, 207064.45802020634, 207096.0426951642, 207127.62444321546, 207159.20630498516], 
-  
-  "yhat_upper": [206811.75257, 206843.34542, 206843.34542, 206906.53563379718, 206938.13333319896, 206969.732651859, 207001.3327320565, 207032.93413123023, 207064.535836731, 207096.1368928556, 207127.73811006278, 207159.34064282666],
-
-  "yhat": [206811.75257, 206843.34542, 206843.34542, 206906.53111999994, 206938.12396999993, 206969.7168199999, 207001.3096699999, 207032.90251999986, 207064.49536999984, 207096.08821999983, 207127.68106999982, 207159.27391999974]
-}
-```
 
 
 ## Fleet location 
@@ -760,7 +720,7 @@ To be able to access this, api user's role must have "EVA+ Fleet Location API" a
 
 Request Method: **GET**
 
-https://`_EVA+ URL_`/EvaCloudAPI/fleet/getLocations
+https:// EVA+URL /EvaPlusRest/fleet/getLocations
 - Header key: Authorization
 - Header Value: Token
 
@@ -812,7 +772,7 @@ To be able to access this api user's role must have "EVA+ Teloc Manager API" act
 
 Request Method: **GET**
 
-https://`_EVA+ URL_`/EvaCloudAPI/teloc/getRecorderList
+https:// EVA+URL /EvaPlusRest/teloc/getRecorderList
 - Header key: Authorization
 - Header Value: Token
 
@@ -869,9 +829,9 @@ To be able to access this api user's role must have "EVA+ Teloc Manager API" act
 
 Request Method: **GET**
 
-https://`_EVA+ URL_`/EvaCloudAPI/teloc/getRecordingCounts?vehicleId=357001_A
+https:// EVA+URL /EvaPlusRest/teloc/getRecordingCounts?vehicleId=357001_A
 
-https://`_EVA+ URL_`/EvaCloudAPI/teloc/getRecordingCounts?vehicleId=357001_A&startTime=20211113&endTime=20211114&signal=System_SPEED
+https:// EVA+URL /EvaPlusRest/teloc/getRecordingCounts?vehicleId=357001_A&startTime=20211113&endTime=20211114&signal=System_SPEED
 - Header key: Authorization
 - Header Value: Token
 
@@ -897,6 +857,8 @@ Response:
 	"page_count": 0
 }]
 ```
+
+
 
 
 # Tutorials
