@@ -69,40 +69,40 @@ Response:
 ```
 [
   {
-    "fleet": "Class3000",
+    "fleet": "ClassXXXX",
     "vehicle": [
-      "3012",
-      "3013",
-      "3014",
-      "3016",
-      "3017",
-      "3018",
-      "3020",
-      "3021",
-      "3024",
-      "3025",
-      "3026",
-      "3029",
-      "3113"
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13"
     ]
   },
   {
-    "fleet": "Class3000_Comeng",
+    "fleet": "ClassXXX",
     "vehicle": [
-      "3002",
-      "3004",
-      "3005",
-      "3006",
-      "3008",
-      "3107",
-      "3110"
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
     ]
   },
   {
-    "fleet": "EastAnglia",
+    "fleet": "NameOfTheFleet",
     "vehicle": [
-      "93 85 0 501 005-8",
-      "745.101-A"
+      "1",
+      "2"
     ]
   }
 ]
@@ -119,21 +119,21 @@ Response:
 ```
 [
   {
-    "id": "19102892",
+    "id": "1",
     "vehicle": [
-      "195002"
+      "1"
     ]
   },
   {
-    "id": "17085829",
+    "id": "2",
     "vehicle": [
-      "195003"
+      "2"
     ]
   },
   {
-    "id": "18113756",
+    "id": "3",
     "vehicle": [
-      "195004"
+      "3"
     ]
   }
 ]
@@ -156,12 +156,12 @@ Response:
 ```
 [
   {
-    "signalname": "System_SPEED",
+    "signalname": "SPEED",
     "signaltype": "SIGNAL_TYPE_ANALOG",
     "signalmemory": "T_3000_GUM_INT_TDATA"
   },
   {
-    "signalname": "autotrans_trigger",
+    "signalname": "trigger",
     "signaltype": "SIGNAL_TYPE_DIGITAL",
     "signalmemory": "T_3000_GUM_INT_TDATA"
   },
@@ -242,8 +242,8 @@ https:// EVA+URL /EvaPlusRest/getSignals
 Request Header Data
 ```
 {
-	"vehicleId": "3002",
-	"recorderId": "5004354",
+	"vehicleId": "1",
+	"recorderId": "1234567",
 	"startTime": "201912301234",
 	"endTime": "201912301239",
 	"signals": ["Speed", "Distance", "B1_0105-BBR_ATPIsol"],
@@ -258,7 +258,7 @@ Last element in array of result set is "page_count" that give information how ma
 ```
 [
   {
-    "conf_issue": "Class3000_Adelaide:01",
+    "conf_issue": "ClassXXXX_conf:01",
     "teloc_file": "3001_20191002-212549-212554-16929.tel/INT_TDATA",
     "teloc_memory": "T_3000_GUM_INT_TDATA",
     "time": "2019-10-03 06:47:49:162",
@@ -269,7 +269,7 @@ Last element in array of result set is "page_count" that give information how ma
     "sourceId": "DISTANCE"
   },
   {
-    "conf_issue": "Class3000_Adelaide:01",
+    "conf_issue": "ClassXXXX_conf:01",
     "teloc_file": "3001_20191002-212549-212554-16929.tel/INT_TDATA",
     "teloc_memory": "T_3000_GUM_INT_TDATA",
     "time": "2019-10-03 06:47:49:082",
@@ -310,8 +310,8 @@ First example of header data has **"isRaw" : "true"**, which means that returned
 Second example of header data has **"isRaw" : "false"**, in this case response will have data with decoded value of data frame.
 ```
 {
-    "vehicleId":"93 85 1 501 018-0",
-    "recorderId":"19090371",
+    "vehicleId":"1",
+    "recorderId":"1234567",
     "startTime":"202110130900",
     "endTime":"202110131000",
     "page":"0",
@@ -320,8 +320,8 @@ Second example of header data has **"isRaw" : "false"**, in this case response w
 }
 
 {
-    "vehicleId":"93 85 1 501 018-0",
-    "recorderId":"19090371",
+    "vehicleId":"2",
+    "recorderId":"1234567",
     "startTime":"202110130900",
     "endTime":"202110131000",
     "page":"0",
@@ -339,8 +339,8 @@ First example of response is case scenario where we have **"isRaw" : "false"** i
 ```
 [
 	{
-		"conf_issue": "SBB_EC250:12",
-		"teloc_file": "/mnt/igfs/adl/20211103/b10ac8f5-e7f6-4859-a461-c40b45252e1e_Stadler_RABe_501_93_85_1_501_018-0_20211013-093546-00605.tel",
+		"conf_issue": "CONF:12",
+		"teloc_file": "pathToTelFile/telfile.tel",
 		"teloc_memory": "T_3000_ETCS_INT_ETCS",
 		"time": "2021-10-13 09:32:36:400",
 		"distance": "3455.7222222222217",
@@ -544,8 +544,8 @@ First example of response is case scenario where we have **"isRaw" : "false"** i
 			"distance": 3455.7222222222219,
 			"timeChangedInSignals": "NONE"
 		},
-		"vehicle_id": "93 85 1 501 018-0",
-		"serial_number": "19090371",
+		"vehicle_id": "1",
+		"serial_number": "1234567",
 		"strvalue": "TELEGRAM FROM BALISE [6]"
 	},
 	{
@@ -558,15 +558,15 @@ Second example of response is case scenario where we have **"isRaw" : "true"** i
 ```
 [
   {
-    "conf_issue": "SBB_EC250:12",
-    "teloc_file": "/mnt/igfs/adl/20211103/b10ac8f5-e7f6-4859-a461-c40b45252e1e_Stadler_RABe_501_93_85_1_501_018-0_20211013-093546-00605.tel",
+    "conf_issue": "CONF:12",
+    "teloc_file": "pathToTelFile/file2.tel",
     "teloc_memory": "T_3000_ETCS_INT_ETCS",
     "time": "2021-10-13 09:32:36:400",
     "distance": "3455.7222222222217",
     "identifier": "EM_6",
     "value": "6",
-    "vehicle_id": "93 85 1 501 018-0",
-    "serial_number": "19090371",
+    "vehicle_id": "1",
+    "serial_number": "1234567",
     "strvalue": "TELEGRAM FROM BALISE [6]",
     "data_frame": {
       "type": 0,
@@ -628,7 +628,7 @@ https:// EVA+URL /EvaPlusRest/getEvents
 Request Header Data
 ```
 {
-	  vehicleId : "3001",
+	  vehicleId : "1",
 	  startTime: "201910020000",
 	  endTime: "201910020600",
 	  events: ["Door_Fault"],
@@ -645,8 +645,8 @@ Event Response:
 ```
 [
   {
-    "teloc_file": "3001_20191001-185124-185129-16818.tel/INT_TDATA",
-    "vehicle_id": "3001",
+    "teloc_file": "teloc_file.tel/INT_TDATA",
+    "vehicle_id": "1",
     "time": "1569946478382",
     "time_str": "02-10-2019 01:44:38",
     "event_type": "Door_Fault",
@@ -656,8 +656,8 @@ Event Response:
     "gps_str": "lon=138.593075867-lat=-34.921256517"
   },
   {
-    "teloc_file": "3001_20191001-185124-185129-16818.tel/INT_TDATA",
-    "vehicle_id": "3001",
+    "teloc_file": "teloc_file.tel/INT_TDATA",
+    "vehicle_id": "1",
     "time": "1569955360336",
     "time_str": "02-10-2019 04:12:40",
     "event_type": "Door_Fault",
@@ -693,7 +693,7 @@ Response:
         "DISTANCE": 161429.82987,
         "System_Speed": "0",
         "GPS_DIR": "110.70",
-        "vehicle_id": "3020",
+        "vehicle_id": "1",
         "timestamp": 1589963845164,
         "POI": "Temp001"
     },
@@ -704,7 +704,7 @@ Response:
         "GPS_SPEED": "0.4630",
         "GPS_DIR": "93.0",
         "System_Speed": "0",
-        "vehicle_id": "3021",
+        "vehicle_id": "1",
         "timestamp": 1589963837660,
         "POI": "Temp001"
     }
@@ -727,18 +727,18 @@ https:// EVA+URL /EvaPlusRest/fleet/getLocations
 Response:
 ```
 [{
-	"vehicle_id": "07",
+	"vehicle_id": "1",
 	"latitude": 53.377501333,
 	"longitude": -2.741854333,
 	"speed": 21.391,
 	"location_time": 1586340743534,
 	"delay": 3015755,
 	"rotation": 0.0,
-	"serial_number": "18090038",
+	"serial_number": "1234567",
 	"vehicle_state": "ok",
 	"event_timestamp": -1
 }, {
-	"vehicle_id": "1",
+	"vehicle_id": "2",
 	"latitude": 53.755609333,
 	"longitude": -2.707278167,
 	"speed": 1.788,
@@ -749,7 +749,7 @@ Response:
 	"vehicle_state": "ok",
 	"event_timestamp": -1
 }, {
-	"vehicle_id": "13",
+	"vehicle_id": "3",
 	"latitude": 53.4019345,
 	"longitude": -2.929962833,
 	"speed": 2.844,
@@ -779,35 +779,35 @@ https:// EVA+URL /EvaPlusRest/teloc/getRecorderList
 Response:
 ```
 [{
-	"vehicle_type": "NORTHERN_DMU",
-	"serial_number": "18090038",
-	"vehicle_id": "07",
-	"configuration_name": "CAF-UK Northern DMU - C.I9",
+	"vehicle_type": "CLASS_XXX",
+	"serial_number": "1234567",
+	"vehicle_id": "1",
+	"configuration_name": "CONFIG - C.I9",
 	"issue_number": "12",
-	"article_number": "5_2423_021_07",
-	"application": "2402.05.26.09",
+	"article_number": "XXX",
+	"application": "XXX",
 	"last_time_seen": "2020-04-08",
 	"status": "OK",
 	"error_code": ""
 }, {
-	"vehicle_type": "NORTHERN_DMU",
-	"serial_number": "17023570",
-	"vehicle_id": "1",
-	"configuration_name": "CAF-UK Northern DMU - C.I9",
+	"vehicle_type": "CLASS_XXX",
+	"serial_number": "1234567",
+	"vehicle_id": "2",
+	"configuration_name": "CONFIG - C.I9",
 	"issue_number": "12",
-	"article_number": "5_2423_021_07",
-	"application": "2402.05.26.09",
+	"article_number": "XXX",
+	"application": "XXX",
 	"last_time_seen": "2020-04-08",
 	"status": "Warning",
 	"error_code": "6"
 }, {
-	"vehicle_type": "NORTHERN_EMU",
-	"serial_number": "19020552",
-	"vehicle_id": "13",
-	"configuration_name": "CAF-UK Northern EMU - C.I8",
+	"vehicle_type": "CLASS_XXX",
+	"serial_number": "1234567",
+	"vehicle_id": "3",
+	"configuration_name": "CONFIG - C.I8",
 	"issue_number": "13",
-	"article_number": "5_2423_021_04",
-	"application": "2402.05.26.09",
+	"article_number": "XXX",
+	"application": "XXX",
 	"last_time_seen": "2020-02-19",
 	"status": "Error",
 	"error_code": "LTS"
