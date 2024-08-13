@@ -143,7 +143,7 @@ Response:
 
 Request Method: **GET**
 
-https:// EVA+URL /EvaPlusRest/getSignalNameList?vehicleId=358949_A
+https:// EVA+URL /EvaPlusRest/getSignalNameList?vehicleId=1
 - Header key: Authorization
 - Header Value: Token
 
@@ -259,7 +259,7 @@ Last element in array of result set is "page_count" that give information how ma
 [
   {
     "conf_issue": "ClassXXXX_conf:01",
-    "teloc_file": "3001_20191002-212549-212554-16929.tel/INT_TDATA",
+    "teloc_file": "teloc_file.tel/INT_TDATA",
     "teloc_memory": "T_3000_GUM_INT_TDATA",
     "time": "2019-10-03 06:47:49:162",
     "distance": "55099.90349",
@@ -270,7 +270,7 @@ Last element in array of result set is "page_count" that give information how ma
   },
   {
     "conf_issue": "ClassXXXX_conf:01",
-    "teloc_file": "3001_20191002-212549-212554-16929.tel/INT_TDATA",
+    "teloc_file": "teloc_file.tel/INT_TDATA",
     "teloc_memory": "T_3000_GUM_INT_TDATA",
     "time": "2019-10-03 06:47:49:082",
     "distance": "55099.90349",
@@ -653,7 +653,7 @@ Event Response:
     "event_desc": "Door Fault D1",
     "driver_id": "",
     "route_code": "",
-    "gps_str": "lon=138.593075867-lat=-34.921256517"
+    "gps_str": "lon=000-lat=-000"
   },
   {
     "teloc_file": "teloc_file.tel/INT_TDATA",
@@ -664,7 +664,7 @@ Event Response:
     "event_desc": "Door Fault D5",
     "driver_id": "",
     "route_code": "",
-    "gps_str": "lon=138.593075867-lat=-34.921256517"
+    "gps_str": "lon=000-lat=-000"
   },
   {
     "page_count": 0
@@ -688,8 +688,8 @@ Response:
 [
     {
         "GPS_SPEED": "0.5659999999999999",
-        "LAT": "-34.9210692670",
-        "LON": "138.5931572830",
+        "LAT": "-000",
+        "LON": "000",
         "DISTANCE": 161429.82987,
         "System_Speed": "0",
         "GPS_DIR": "110.70",
@@ -698,8 +698,8 @@ Response:
         "POI": "Temp001"
     },
     {
-        "LAT": "-34.92095110",
-        "LON": "138.59273940",
+        "LAT": "-000",
+        "LON": "000",
         "DISTANCE": 192724.9451,
         "GPS_SPEED": "0.4630",
         "GPS_DIR": "93.0",
@@ -728,8 +728,8 @@ Response:
 ```
 [{
 	"vehicle_id": "1",
-	"latitude": 53.377501333,
-	"longitude": -2.741854333,
+	"latitude": 000,
+	"longitude": -000,
 	"speed": 21.391,
 	"location_time": 1586340743534,
 	"delay": 3015755,
@@ -739,24 +739,24 @@ Response:
 	"event_timestamp": -1
 }, {
 	"vehicle_id": "2",
-	"latitude": 53.755609333,
-	"longitude": -2.707278167,
+	"latitude": 000,
+	"longitude": -000,
 	"speed": 1.788,
 	"location_time": 1586340741680,
 	"delay": 3015757,
 	"rotation": 0.0,
-	"serial_number": "17023570",
+	"serial_number": "1234567",
 	"vehicle_state": "ok",
 	"event_timestamp": -1
 }, {
 	"vehicle_id": "3",
-	"latitude": 53.4019345,
-	"longitude": -2.929962833,
+	"latitude": 000,
+	"longitude": -000,
 	"speed": 2.844,
 	"location_time": 1582102721330,
 	"delay": 7253778,
 	"rotation": 0.0,
-	"serial_number": "19020552",
+	"serial_number": "1234567",
 	"vehicle_state": "ok",
 	"event_timestamp": -1
 }]
@@ -829,9 +829,9 @@ To be able to access this api user's role must have "EVA+ Teloc Manager API" act
 
 Request Method: **GET**
 
-https:// EVA+URL /EvaPlusRest/teloc/getRecordingCounts?vehicleId=357001_A
+https:// EVA+URL /EvaPlusRest/teloc/getRecordingCounts?vehicleId=1
 
-https:// EVA+URL /EvaPlusRest/teloc/getRecordingCounts?vehicleId=357001_A&startTime=20211113&endTime=20211114&signal=System_SPEED
+https:// EVA+URL /EvaPlusRest/teloc/getRecordingCounts?vehicleId=1&startTime=20211113&endTime=20211114&signal=System_SPEED
 - Header key: Authorization
 - Header Value: Token
 
