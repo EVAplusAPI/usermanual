@@ -53,6 +53,20 @@ Response:
 
 All API calls from now on will use this string token as Header Value for auhtorization.
 
+### Version
+
+Request Method: **GET**
+
+https:// EVA+URL /EvaPlusRest/configuration/getVersion
+- Header key: Authorization
+- Header Value: Token
+
+Response:
+```
+{
+    "version": "x.x.x"
+}
+```
 
 ###	HTTPS
 
